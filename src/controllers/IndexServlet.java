@@ -17,7 +17,7 @@ import utils.DBUtil;
 /**
  * Servlet implementation class IndexServlet
  */
-@WebServlet("/Index")
+@WebServlet("/index")
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -33,16 +33,16 @@ public class IndexServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EntityManager em = DBUtil.createEntityManager();
+	    EntityManager em = DBUtil.createEntityManager();
 
-		List<Message> messages = em.createNamedQuery("getAllMessages",Message.class).getResultList();
+	    List<Message> messages = em.createNamedQuery("getAllMessages", Message.class).getResultList();
 
-		em.close();
+	    em.close();
 
-		request.setAttribute("messages", messages);
+	    request.setAttribute("messages", messages);
 
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/messages/index.jsp");
-		rd.forward(request, response);
+	    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/messages/index.jsp");
+	    rd.forward(request, response);
 
 	}
 
